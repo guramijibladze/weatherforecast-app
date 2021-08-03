@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 
 
@@ -10,10 +11,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AngularSvgIconModule
+  ], 
+  exports: [
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class ShellModule { }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodayDetailRoutingModule } from './today-detail-routing.module';
 import { ForecastDetailComponent } from './forecast-detail/forecast-detail.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 
 
@@ -12,7 +13,8 @@ import { ForecastDetailComponent } from './forecast-detail/forecast-detail.compo
   ],
   imports: [
     CommonModule,
-    TodayDetailRoutingModule
+    TodayDetailRoutingModule,
+    AngularSvgIconModule
   ]
 })
 export class TodayDetailModule { }
