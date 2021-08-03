@@ -1,4 +1,4 @@
-import {  HttpClientModule } from '@angular/common/http';
+import {  HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularSvgIconModule } from 'angular-svg-icon';
@@ -18,7 +18,7 @@ import { ShellModule } from './shell/shell.module';
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
