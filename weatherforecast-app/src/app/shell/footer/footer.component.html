@@ -2,7 +2,10 @@
 <footer class="page-footer  fixed-bottom">
     <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item text-center"> 
-            <a class="nav-link m-1" aria-current="page" style="width: 77px;">
+            <a  class="nav-link m-1" 
+                aria-current="page" 
+                style="width: 77px;"
+                (click)="goToToday()">
                 <svg-icon
                     src="/assets/images/18380626211553771446.svg" 
                     [svgStyle]="{ 'width.px':30, 'height.px':30 }">
@@ -11,7 +14,9 @@
             </a>
         </li>
         <li class="nav-item text-center ">
-          <a class="nav-link mt-1" style="width: 77px;">
+          <a  class="nav-link mt-1" 
+              style="width: 77px;" 
+              (click)="goToForecast()">
             <svg-icon
                 src="/assets/images/6257737161582985678.svg" 
                 [svgStyle]="{ 'width.px':30, 'height.px':30 }">
