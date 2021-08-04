@@ -16,6 +16,7 @@ export class ForecastDetailComponent implements OnInit {
   weekDay
   month
   today: number
+  hasError: boolean
   _weatherByLocation: WeatherByLocationView;
 
 
@@ -28,9 +29,16 @@ export class ForecastDetailComponent implements OnInit {
     setInterval(() => {
       this.today = Date.now();
       this.hours = new Date().getHours();
+      if( this.hours >= 20 || this.hours <= 7){
+        this.hasError = true
+      }else{
+        this.hasError = false
+      }
+      console.log(this.hours)
       this.minutes = new Date().getMinutes();
     }, 1000)
 
+    
     this.weekDay = new Date().getDay();
     this.month = new Date().getMonth()
   }
@@ -76,6 +84,7 @@ export class ForecastDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentDate()
     this.getCurrentLocation()
+    
   }
 
 }

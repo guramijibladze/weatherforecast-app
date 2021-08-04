@@ -3,9 +3,7 @@
 
     .box{
         width: 600px;
-        background-color: rgb(28, 28, 36);
-        color: white;
-
+        box-shadow: 5px 5px 8px 5px #0a0a0a;
         .time-box{
             margin-top: -30px;
             background-color: rgb(141, 136, 66);
@@ -29,4 +27,10 @@
         width: 100%!important;
         text-align:start;
     }
+  }
+
+  main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
