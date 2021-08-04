@@ -32,32 +32,12 @@
                         <h3>FRIDAY</h3>
                     </div>
                     <div class="date-info d-flex flex-column mt-5">
-                        <div class="row">
-                            <div class="col-2">icon</div>
+                        <div class="row" *ngFor="let i of _weatherByHourlyforecast?.list">
+                            <div class="col-2">{{ i.weather.icon }}</div>
                             <div class="col-10">
                                 <div class="d-flex justify-content-between">
-                                    <div class="time">13:00</div>
-                                    <div class="temperature">15C</div>
-                                </div>
-                                <hr/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2">icon</div>
-                            <div class="col-10">
-                                <div class="d-flex justify-content-between">
-                                    <div class="time">16:00</div>
-                                    <div class="temperature">15C</div>
-                                </div>
-                                <hr/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2">icon</div>
-                            <div class="col-10">
-                                <div class="d-flex justify-content-between">
-                                    <div class="time">19:00</div>
-                                    <div class="temperature">15C</div>
+                                    <div class="time">{{ i.dt_txt }}</div>
+                                    <div class="temperature">{{i.main.temp}}</div>
                                 </div>
                                 <hr/>
                             </div>

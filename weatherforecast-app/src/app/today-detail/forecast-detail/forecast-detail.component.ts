@@ -71,7 +71,6 @@ export class ForecastDetailComponent implements OnInit {
           date: x.dt,
           main: x.main,
           citiName: x.name,
-         
           countryIndex: x.sys,
           weather: x.weather,
           wind: x.wind,
