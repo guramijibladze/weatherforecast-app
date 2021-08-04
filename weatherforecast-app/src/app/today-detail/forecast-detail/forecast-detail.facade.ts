@@ -14,4 +14,19 @@ month:string[] = [ "January", "February", "March", "April", "May", "June", "July
     getMonth(m){
         return this.month[m]
     }
+
+
+    getPosition(): Promise<any>{
+    return new Promise((resolve, reject) => {
+
+      navigator.geolocation.getCurrentPosition(resp => {
+
+          resolve({lon: resp.coords.longitude, lat: resp.coords.latitude});
+        },
+        err => {
+          reject(err);
+        });
+    });
+
+  }
 }

@@ -17,6 +17,8 @@ export class ForecastDetailComponent implements OnInit {
   month
   today: number
   hasError: boolean
+  interval
+
   _weatherByLocation: WeatherByLocationView;
 
 
@@ -26,7 +28,7 @@ export class ForecastDetailComponent implements OnInit {
     ) { }
 
   getCurrentDate(){
-    setInterval(() => {
+     this.interval = setInterval(() => {
       this.today = Date.now();
       this.hours = new Date().getHours();
       if( this.hours >= 20 || this.hours <= 7){
@@ -53,7 +55,7 @@ export class ForecastDetailComponent implements OnInit {
   }
 
   getCurrentLocation(){
-    this.getweatherservice.getPosition().then(pos=>
+    this.facade.getPosition().then(pos=>
       {
         this.getResult(pos.lon, pos.lat);
       });
@@ -85,6 +87,12 @@ export class ForecastDetailComponent implements OnInit {
     this.getCurrentDate()
     this.getCurrentLocation()
     
+  }
+
+  ngOnDestroy(){
+    if(this.interval){
+      clearInterval(this.interval);
+    }
   }
 
 }
