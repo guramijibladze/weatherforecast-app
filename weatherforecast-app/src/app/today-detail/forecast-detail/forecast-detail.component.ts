@@ -9,9 +9,7 @@ import { ServiceService } from 'src/app/services/service.service';
 export class ForecastDetailComponent implements OnInit {
   hours
   minutes
-  color:boolean
-  x:number;
-  y:number
+ 
 
   constructor(private getweatherservice: ServiceService) { }
 
@@ -21,21 +19,24 @@ export class ForecastDetailComponent implements OnInit {
       this.minutes = new Date().getMinutes();
     }, 1000)
 
-    if(this.hours > 18){
-     this.color = false
-    }
+  }
+
+  getCurrentLocation(){
+    this.getweatherservice.getPosition().then(pos=>
+      {
+         console.log(`Positon: ${pos.lon} ${pos.lat}`);
+      });
   }
 
 
   getResult(){
-    
     const res$ = this.getweatherservice.getWeather().subscribe(x => console.log(x))
   }
   
 
   ngOnInit(): void {
     this.getCurrentDate()
-    
+    this.getCurrentLocation()
   }
 
 }

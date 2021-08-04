@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  nameApi: 'http://www.api.openweathermap.org/data/2.5/weather?lat={35}&lon={139}&appid={8aa192e7acfbfb4d6ca8812ddf460e4c}'
+  nameApi: 'https://api.openweathermap.org/data/2.5/weather?lat&lon&appid=e3cd3bcd0c2d19ff5867be6439e84351}'
 };
 
 /*
