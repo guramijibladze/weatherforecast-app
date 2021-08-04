@@ -5,20 +5,21 @@
                     >
                 <!-- [ngStyle]="color?{'background-color': 'white'}" -->
                 <div class="time-box float-end border rounded-pill p-2">
-                    {{ hours }}:{{ minutes }}
+                    {{today | date:'mediumTime'}}
                 </div>
                 <div class="main text-center">
                     <svg-icon
                         src="/assets/images/15783382081579547660.svg" 
                         [svgStyle]="{ 'width.px':80, 'height.px':80 }">
                     </svg-icon>
-                    <h3>London, UK</h3>
-                    <h6>15C | Drizzle</h6>
+                    <h3>{{ _weatherByLocation.citiName }}, {{ _weatherByLocation.countryIndex.country}}</h3>
+                    <h6>{{ _weatherByLocation.main.temp }} | {{ _weatherByLocation.weather[0].description }} </h6>
                 </div>
                 <div class="date-info text-center row mt-5">
                     <div class="date col-sm ">
-                        <h3>Tuesday</h3>
-                        <h6>15-Jan-2021</h6>
+                        <h3>{{ currentDay }}</h3>
+                        <h6>{{today | date:'longDate'}}</h6>
+                        
                     </div>
                     <div class="info col-sm ">
                         <div class="d-flex ">
@@ -31,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="icon-info float-start">
-                                <h6 class="mt-2">50%</h6>
+                                <h6 class="mt-2">{{ _weatherByLocation.clouds.all }}%</h6>
                             </div>
                         </div>
                         <div class="d-flex ">
@@ -44,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="icon-info ">
-                                <h6 class="mt-2">1.0MM</h6>
+                                <h6 class="mt-2">MM</h6>
                             </div>
                         </div>
                         <div class="d-flex ">
@@ -57,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="icon-info ">
-                                <h6 class="mt-2">20KM/H</h6>
+                                <h6 class="mt-2">{{ _weatherByLocation.wind.speed }} KM/H</h6>
                             </div>
                         </div>
                         <div class="d-flex ">
@@ -70,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="icon-info ">
-                                <h6 class="mt-2">SE</h6>
+                                <h6 class="mt-2">{{ _weatherByLocation.wind.deg }} </h6>
                             </div>
                         </div>
                     </div>
@@ -81,5 +82,4 @@
 </main>
 
 
-
-<button (click)="getResult()">click</button>
+<!-- {{ _weatherByLocation.rain.1h }} -->
