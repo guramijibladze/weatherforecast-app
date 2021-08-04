@@ -36,7 +36,7 @@ export class ForecastDetailComponent implements OnInit {
       }else{
         this.hasError = false
       }
-      console.log(this.hours)
+      // console.log(this.hours)
       this.minutes = new Date().getMinutes();
     }, 1000)
 

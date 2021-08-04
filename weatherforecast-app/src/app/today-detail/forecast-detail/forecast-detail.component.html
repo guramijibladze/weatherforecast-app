@@ -16,8 +16,8 @@
                         src="/assets/images/15783382081579547660.svg" 
                         [svgStyle]="{ 'width.px':80, 'height.px':80 }">
                     </svg-icon>
-                    <h3>{{ _weatherByLocation.citiName }}, {{ _weatherByLocation.countryIndex.country}}</h3>
-                    <h6>{{ _weatherByLocation.main.temp }} | {{ _weatherByLocation.weather[0].description }} </h6>
+                    <h3>{{ _weatherByLocation?.citiName }}, {{ _weatherByLocation?.countryIndex?.country}}</h3>
+                    <h6>{{ _weatherByLocation?.main?.temp }} | {{ _weatherByLocation?.weather[0]?.description }} </h6>
                 </div>
                 <div class="date-info text-center row mt-5">
                     <div class="date col-sm ">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="icon-info float-start">
-                                <h6 class="mt-2">{{ _weatherByLocation.clouds.all }}%</h6>
+                                <h6 class="mt-2">{{ _weatherByLocation?.clouds?.all }}%</h6>
                             </div>
                         </div>
                         <div class="d-flex ">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="icon-info ">
-                                <h6 class="mt-2">{{ _weatherByLocation.wind.speed }} KM/H</h6>
+                                <h6 class="mt-2">{{ _weatherByLocation?.wind?.speed }} KM/H</h6>
                             </div>
                         </div>
                         <div class="d-flex ">
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="icon-info ">
-                                <h6 class="mt-2">{{ _weatherByLocation.wind.deg }} </h6>
+                                <h6 class="mt-2">{{ _weatherByLocation?.wind?.deg }} </h6>
                             </div>
                         </div>
                     </div>
