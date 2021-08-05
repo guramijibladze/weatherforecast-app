@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { DaysForecastFacade } from './days-forecast.facade';
 import { Hourlyforecast } from '../days-forecast.model';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-days-forecast',
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class DaysForecastComponent implements OnInit {
   _weatherByHourlyforecast: Hourlyforecast;
   icon
+  time
   // icons$: Observable<boolean>;
 
   constructor(
@@ -32,6 +33,7 @@ export class DaysForecastComponent implements OnInit {
     this.getweatherservice.getWeatherForecast(lon,lat)
     .subscribe(x => {
       this._weatherByHourlyforecast = x;
+      this.time = this._weatherByHourlyforecast.list[0].dt_txt.slice(10, 16)
       this.icon = x.list[0].weather[0].icon
     })
   }

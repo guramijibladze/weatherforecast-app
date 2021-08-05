@@ -27,11 +27,11 @@
 <!-- *ngIf="icons$ | async" -->
 <div class="container">
         <div class="d-flex justify-content-center">
-            <div class="box border rounded-3 p-3 " >
+            <div class="box border rounded-3 p-2 " >
                     <div class="day">
-                        <h3>FRIDAY</h3>
+                        <h3>Today</h3>
                     </div>
-                    <div class="date-info d-flex flex-column mt-5">
+                    <div class="date-info d-flex flex-column mt-4">
                         <div class="row" *ngFor="let i of _weatherByHourlyforecast?.list">
                             <div class="col-2" >
                                 <img [src]="i.weather.icon" alt="">
@@ -39,9 +39,10 @@
                             </div>
                             <div class="col-10">
                                 <div class="d-flex justify-content-between">
-                                    <div class="time">{{ i.dt_txt }}</div>
+                                    <div class="time">{{ time }}</div>
                                     <div class="temperature">{{i.main.temp}}</div>
                                 </div>
+                                <div class="weather-description">{{ i.weather[0].description }}</div>
                                 <hr/>
                             </div>
                         </div>
