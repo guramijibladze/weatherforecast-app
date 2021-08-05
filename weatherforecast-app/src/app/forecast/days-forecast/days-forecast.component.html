@@ -1,52 +1,43 @@
-
-<div class="container-fluid">
-    <div class="days">
-        <ul class="nav nav-tabs nav-fill">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">TODAY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SAT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SUN</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">MON</a>
-              </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">TUE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">WED</a>
-            </li>
-          </ul>
+<main>
+    <div class="container-fluid">
+        <div class="days">
+            <ul class="nav nav-tabs nav-fill">
+                <li class="nav-item" *ngFor="let d of FiveDaysForecastArr; let in = index">
+                    <a class="nav-link"
+                        (click)="getChoosedateInfo(in)"
+                        >{{ d.dt_txt | date:'EEEE' }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<!-- *ngIf="icons$ | async" -->
-<div class="container">
-        <div class="d-flex justify-content-center">
-            <div class="box border rounded-3 p-2 " >
-                    <div class="day">
-                        <h3>Today</h3>
-                    </div>
-                    <div class="date-info d-flex flex-column mt-4">
-                        <div class="row" *ngFor="let i of _weatherByHourlyforecast?.list">
-                            <div class="col-2" >
-                                <img [src]="i.weather.icon" alt="">
+    <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="box border rounded-3 p-2 " >
+                        <div class="day text-center p-1" >
+                            <h3>{{ day | date:'EEEE' }}</h3>
+                        </div>
+                        <div class="date-info d-flex flex-column mt-3">
+                            <div class="row" *ngFor="let i of detail">
+                                <div class="col-2" >
+                                    
+                                    <img src="assets/images/icons{{i.weather[0].icon}}@2x.png" alt="icon">
                             
-                            </div>
-                            <div class="col-10">
-                                <div class="d-flex justify-content-between">
-                                    <div class="time">{{ time }}</div>
-                                    <div class="temperature">{{i.main.temp}}<span style='font-size:20px;'>&#8451;</span></div>
                                 </div>
-                                <div class="weather-description">{{ i.weather[0].description }}</div>
-                                <hr/>
+                                <div class="col-10">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="time">{{i.dt_txt | date:'shortTime'}}</div>
+                                        <div class="temperature"><span style='font-size:20px;'>
+                                            {{ i.main.temp}}&#8451;</span></div>
+                                    </div>
+                                    <div class="weather-description">{{ i.weather[0].description }}</div>
+                                    <hr/>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                </div>
             </div>
-        </div>
-</div>
+    </div>
+</main>
+
+

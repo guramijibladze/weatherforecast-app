@@ -21,13 +21,13 @@ export class ServiceService {
   }
 
   getWeatherForecast(lon, lat):Observable<Hourlyforecast>{
-    return this.http.get<Hourlyforecast>(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=8&appid=e3cd3bcd0c2d19ff5867be6439e84351&units=metric`)
+    return this.http.get<Hourlyforecast>(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=e3cd3bcd0c2d19ff5867be6439e84351&units=metric`)
   }
 
-  getWeatherIcon(icon):Observable<any>{
-    console.log(icon)
-    return this.http.get<any>(`http://openweathermap.org/img/wn/${icon}@2x.png`)
-  }
+  // getWeatherIcon(icon):Observable<any>{
+  //   console.log(icon)
+  //   return this.http.get<any>(`http://openweathermap.org/img/wn/${icon}@2x.png`)
+  // }
 
 
 }
