@@ -6,7 +6,7 @@
                 [style.background-color] = "hasError ? 'black': 'white'"
                 class="box border rounded-3 p-3"
                     >
-                <!-- [ngStyle]="color?{'background-color': 'white'}" -->
+
                 <div class="time-box float-end border rounded-pill p-2">
                     {{today | date:'mediumTime'}}
                 </div>
@@ -17,7 +17,7 @@
                         [svgStyle]="{ 'width.px':80, 'height.px':80 }">
                     </svg-icon>
                     <h3>{{ _weatherByLocation?.citiName }}, {{ _weatherByLocation?.countryIndex?.country}}</h3>
-                    <h6>{{ _weatherByLocation?.main?.temp }} | {{ _weatherByLocation?.weather[0]?.description }} </h6>
+                    <h6>{{ _weatherByLocation?.main?.temp }}<span style='font-size:20px;'>&#8451;</span> | {{ _weatherByLocation?.weather[0]?.description }} </h6>
                 </div>
                 <div class="date-info text-center row mt-5">
                     <div class="date col-sm ">
