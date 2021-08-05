@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { WeatherByLocationView } from '../forecast.model';
 import { ForecastDetailFacade } from './forecast-detail.facade';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-forecast-detail',
@@ -24,7 +25,8 @@ export class ForecastDetailComponent implements OnInit {
 
   constructor(
       private getweatherservice: ServiceService,
-      private facade: ForecastDetailFacade
+      private facade: ForecastDetailFacade,
+      private loadingservice: LoadingService
     ) { }
 
   getCurrentDate(){
@@ -64,8 +66,10 @@ export class ForecastDetailComponent implements OnInit {
 
 
   getResult(lon, lat){
+    
     const res$ = this.getweatherservice.getWeather(lon, lat)
-      .pipe(map((x) => {
+      .pipe(
+        map((x) => {
         // console.log(x)
         return {
           date: x.dt,
@@ -75,14 +79,16 @@ export class ForecastDetailComponent implements OnInit {
           weather: x.weather,
           wind: x.wind,
           clouds: x.clouds,
-          // rain: x.rain
         }
+      }),finalize(() => {
+        this.loadingservice.stop();
       }))
       .subscribe(x => this._weatherByLocation = x)
   }
   
 
   ngOnInit(): void {
+    this.loadingservice.start();
     this.getCurrentDate()
     this.getCurrentLocation()
     

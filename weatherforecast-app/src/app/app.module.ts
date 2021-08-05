@@ -5,6 +5,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { ShellModule } from './shell/shell.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ShellModule } from './shell/shell.module';
     AppRoutingModule,
     ShellModule,
     HttpClientModule,
+    SharedModule,
     AngularSvgIconModule.forRoot(),
   ],
   providers: [HttpClient],

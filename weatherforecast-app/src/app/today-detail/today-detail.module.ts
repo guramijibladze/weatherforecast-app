@@ -5,6 +5,7 @@ import { ForecastDetailComponent } from './forecast-detail/forecast-detail.compo
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { API_URL, ServiceService } from '../services/service.service';
 import { environment } from 'src/environments/environment';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { environment } from 'src/environments/environment';
   imports: [
     CommonModule,
     TodayDetailRoutingModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    SharedModule
   ],
   providers:[
     ServiceService,
