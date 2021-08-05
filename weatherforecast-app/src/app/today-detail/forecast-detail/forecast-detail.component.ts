@@ -30,6 +30,7 @@ export class ForecastDetailComponent implements OnInit {
     ) { }
 
   getCurrentDate(){
+    
      this.interval = setInterval(() => {
       this.today = Date.now();
       this.hours = new Date().getHours();
@@ -66,10 +67,12 @@ export class ForecastDetailComponent implements OnInit {
 
 
   getResult(lon, lat){
-    
+    this.loadingservice.start();
     const res$ = this.getweatherservice.getWeather(lon, lat)
-      .pipe(
-        map((x) => {
+      .pipe(finalize(() => {
+        this.loadingservice.stop();
+      })
+        ,map((x) => {
         // console.log(x)
         return {
           date: x.dt,
@@ -80,15 +83,13 @@ export class ForecastDetailComponent implements OnInit {
           wind: x.wind,
           clouds: x.clouds,
         }
-      }),finalize(() => {
-        this.loadingservice.stop();
       }))
       .subscribe(x => this._weatherByLocation = x)
   }
   
 
   ngOnInit(): void {
-    this.loadingservice.start();
+    
     this.getCurrentDate()
     this.getCurrentLocation()
     

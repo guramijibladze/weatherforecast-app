@@ -5,6 +5,7 @@ import { ForecastRoutingModule } from './forecast-routing.module';
 import { DaysForecastComponent } from './days-forecast/days-forecast.component';
 import { API_URL, ServiceService } from '../services/service.service';
 import { environment } from 'src/environments/environment';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,7 +15,8 @@ import { environment } from 'src/environments/environment';
   ],
   imports: [
     CommonModule,
-    ForecastRoutingModule
+    ForecastRoutingModule,
+    SharedModule
   ],
   providers:[
     ServiceService,

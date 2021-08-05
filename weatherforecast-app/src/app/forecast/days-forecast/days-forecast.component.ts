@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { DaysForecastFacade } from './days-forecast.facade';
-import { pluck } from 'rxjs/operators';
+import { finalize, pluck } from 'rxjs/operators';
+import { LoadingService } from 'src/app/services/loading.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class DaysForecastComponent implements OnInit {
 
   constructor(
     private getweatherservice:ServiceService,
-    private getpositonfacade: DaysForecastFacade
+    private getpositonfacade: DaysForecastFacade,
+    private loadingservice: LoadingService
   ) { }
 
   
@@ -30,7 +32,11 @@ export class DaysForecastComponent implements OnInit {
   }
 
   getWeatherForecast(lon,lat){
+    this.loadingservice.start();
     this.getweatherservice.getWeatherForecast(lon,lat).pipe(
+      finalize(() => {
+        this.loadingservice.stop();
+      }),
       pluck('list')
     )
     .subscribe(x => {
@@ -48,29 +54,29 @@ export class DaysForecastComponent implements OnInit {
       this.x = 0
       this.y = 8
       this.forcastDetail(this.obj)
-      return
+    
     }else if( i == 1){
       this.x = 8
       this.y = 16
       this.forcastDetail(this.obj)
-      return
+   
     }else if( i == 2 ){
       this.x = 16
       this.y = 24
       this.forcastDetail(this.obj)
-      return
+   
     }else if( i == 3 ){
       this.x = 24
       this.y = 32
       this.forcastDetail(this.obj)
-      return
+    
     }else{
       this.x = 32
       this.y = 39
       this.forcastDetail(this.obj)
-      return
+      
     }
-    
+  
   }
 
   day:string
