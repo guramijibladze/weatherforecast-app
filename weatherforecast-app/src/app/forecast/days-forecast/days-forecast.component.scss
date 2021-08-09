@@ -34,21 +34,17 @@
 main{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 110%;
   }
 
   @media screen and (max-height: 668px) {
     main{
-        // position: absolute;
-        // width: 100%;
-        height: 155%!important;
+        height: 168%!important;
       }
   }
 
   @media screen and (max-height: 824px) and (min-height: 669px) {
     main{
-        // position: absolute;
-        // width: 100%;
-        height: 132%!important;
+        height: 148%!important;
       }
   }
